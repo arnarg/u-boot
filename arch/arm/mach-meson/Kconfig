@@ -48,6 +48,13 @@ config TARGET_P212
 	  with 2 GiB of RAM, Ethernet, HDMI, 2 USB, micro-SD slot,
 	  eMMC, IR receiver, CVBS+Audio jack and a SDIO WiFi module.
 
+config TARGET_P281
+	bool "P281"
+	help
+	  P281 is a reference design board based on Meson GXL S905W SoC
+	  with 2 GiB of RAM, Ethernet, HDMI, 2 USB, micro-SD slot,
+	  eMMC, IR receiver, CVBS+Audio jack and a SDIO WiFi module.
+
 config TARGET_LIBRETECH_CC
 	bool "LIBRETECH-CC"
 	help
@@ -75,6 +82,8 @@ source "board/amlogic/odroid-c2/Kconfig"
 source "board/amlogic/nanopi-k2/Kconfig"
 
 source "board/amlogic/p212/Kconfig"
+
+source "board/amlogic/p281/Kconfig"
 
 source "board/amlogic/libretech-cc/Kconfig"
 

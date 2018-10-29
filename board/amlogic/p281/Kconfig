@@ -1,0 +1,12 @@
+if TARGET_P281
+
+config SYS_BOARD
+	default "p281"
+
+config SYS_VENDOR
+	default "amlogic"
+
+config SYS_CONFIG_NAME
+	default "p281"
+
+endif
