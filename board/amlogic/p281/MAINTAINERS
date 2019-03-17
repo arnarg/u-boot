@@ -1,0 +1,6 @@
+P281
+M:	Arnar Gauti Ingason <arnarg@fastmail.com>
+S:	Maintained
+F:	board/amlogic/p281/
+F:	include/configs/p281.h
+F:	configs/p281_defconfig
