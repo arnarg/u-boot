@@ -70,8 +70,9 @@
 	"bootenv_addr_r=0x01080000\0" \
 	"preboot=for target in 1 2;do " \
 		"for prefix in / /boot/;do " \
-			"if load mmc ${target}:1 ${bootenv_addr_r} ${prefix}uEnv.txt;then " \
-				"env import ${bootenv_addr_r} ${filesize}; " \
+			"if test -e mmc ${target}:1 ${prefix}uEnv.txt;then " \
+				"load mmc ${target}:1 ${bootenv_addr_r} ${prefix}uEnv.txt; " \
+				"env import -t ${bootenv_addr_r} ${filesize}; " \
 			"fi; " \
 		"done; " \
 	"done\0" \
