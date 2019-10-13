@@ -49,6 +49,8 @@
 #define CONFIG_SYS_LOAD_ADDR		CONFIG_SYS_TEXT_BASE
 #define CONFIG_SYS_BOOTM_LEN		(64 << 20) /* 64 MiB */
 
+#define CONFIG_PREBOOT
+
 /* ROM USB boot support, auto-execute boot.scr at scriptaddr */
 #define BOOTENV_DEV_ROMUSB(devtypeu, devtypel, instance) \
 	"bootcmd_romusb=" \
@@ -89,6 +91,15 @@
 	"pxefile_addr_r=0x01080000\0" \
 	"ramdisk_addr_r=0x13000000\0" \
 	"fdtfile=amlogic/" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+	"bootenv_addr_r=0x01080000\0" \
+	"preboot=for target in 1 2;do " \
+		"for prefix in / /boot/;do " \
+			"if test -e mmc ${target}:1 ${prefix}uEnv.txt;then " \
+				"load mmc ${target}:1 ${bootenv_addr_r} ${prefix}uEnv.txt; " \
+				"env import -t ${bootenv_addr_r} ${filesize}; " \
+			"fi; " \
+		"done; " \
+	"done\0" \
 	BOOTENV
 #endif
 
